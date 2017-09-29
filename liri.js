@@ -22,8 +22,33 @@ function myTweets() {
 	});
 }
 
-function spotifyThis() {
+function spotifyThis(song) {
+	var spotify_client = new spotify({
+		id: keys.spotify.client_id,
+		secret: keys.spotify.client_secret
+	});
+	if (song === undefined) {
+		song = "The Sign";
+	};
 
+	spotify_client.search({ type: 'track', query: song }, function(err, data) {
+	    if (err) {
+	      console.log('Error occurred: ' + err);
+	      return;
+	    }
+	    var songs = data.tracks.items;
+	    var data = [];
+
+	    for (var i = 0; i < songs.length; i++) {
+	      data.push({
+	        'artist(s)': songs[i].artists.map(artist.name),
+	        'song name: ': songs[i].name,
+	        'preview song: ': songs[i].preview_url,
+	        'album: ': songs[i].album.name,
+	      });
+	    }
+	    console.log(data);
+  });
 }
 
 function movieThis() {
