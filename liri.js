@@ -134,8 +134,17 @@ function run(instruction, arg) {
 
 //Handle multiple word search arguments
 
-// var command = process.argv[2];
+var command = process.argv[2];
+var searchTerm = "";
+var args = process.argv;
+for (var i = 3; i < args.length; i++) {
+	if (i > 3 && i < args.length) {
+		searchTerm = searchTerm + " " + args[i];
+	} else {
+		searchTerm += args[i];
+	}
+}
 
-// var searchTerm = process.argv[3]
+console.log(searchTerm);
 
-run(process.argv[2], process.argv[3])
+run(command, searchTerm);
