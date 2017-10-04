@@ -23,6 +23,7 @@ function myTweets() {
 }
 
 function spotifyThis(song) {
+	//handle multiple word songs
 	var spotify_client = new spotify({
 		id: keys.spotify.client_id,
 		secret: keys.spotify.client_secret
@@ -66,7 +67,7 @@ function movieThis(movie) {
 	if (movie === undefined) {
 		movie = "Mr Nobody";
 	}
-	//HANDLE two word movies
+	//HANDLE multiple word movies
 	console.log(movie);
 	
 	var queryUrl = 'http://www.omdbapi.com/?t=' + movie + "&apikey=40e9cece";
@@ -116,9 +117,11 @@ function run(instruction, arg) {
 			myTweets();
 			break;
 		case "spotify-this-song":
+			//handle multiple word queries
 			spotifyThis(arg);
 			break;
 		case "movie-this":
+			//handle multiple word queries
 			movieThis(arg);
 			break;
 		case "do-what-it-says":
@@ -128,5 +131,11 @@ function run(instruction, arg) {
 			console.log("I'm sorry I do not know how to do that");
 	}
 }
+
+//Handle multiple word search arguments
+
+// var command = process.argv[2];
+
+// var searchTerm = process.argv[3]
 
 run(process.argv[2], process.argv[3])
