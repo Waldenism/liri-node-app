@@ -68,10 +68,10 @@ function movieThis(movie) {
 		movie = "Mr Nobody";
 	}
 	//HANDLE multiple word movies
-	console.log(movie);
+	// console.log(movie);
 	
 	var queryUrl = 'http://www.omdbapi.com/?t=' + movie + "&apikey=40e9cece";
-	console.log(queryUrl);
+	// console.log(queryUrl);
 
 	request(queryUrl, function(error, response, body) {
 	    if (error) {
@@ -145,6 +145,6 @@ for (var i = 3; i < args.length; i++) {
 	}
 }
 
-console.log(searchTerm);
+// console.log(searchTerm);
 
 run(command, searchTerm);
